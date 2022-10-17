@@ -1,10 +1,11 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Action RPG Resources/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Hboxes/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hboxes/SwordHitbox.gd" type="Script" id=4]
 [ext_resource path="res://Hboxes/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
@@ -681,6 +682,10 @@ height = 6.0
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
+
+[node name="ShadowSprite" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+offset = Vector2( 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -9 )

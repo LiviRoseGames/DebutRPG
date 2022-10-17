@@ -1679,8 +1679,14 @@ position = Vector2( 82, 141 )
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 125, 94 )
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
+
 [node name="Bat" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 58, 100 )
+position = Vector2( 42, 54 )
+
+[node name="Bat2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 98, 518 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 109.0
@@ -1696,4 +1702,15 @@ margin_right = 33.0
 margin_bottom = 308.0
 text = "first combat. locks"
 
-[node name="HealthUI" parent="." instance=ExtResource( 5 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 5 )]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 44.0
+margin_bottom = 44.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 125, 94 )
+current = true
+smoothing_enabled = true
