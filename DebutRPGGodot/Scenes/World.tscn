@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Art/map/tileset.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Switch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Bat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -1694,3 +1695,5 @@ margin_top = 294.0
 margin_right = 33.0
 margin_bottom = 308.0
 text = "first combat. locks"
+
+[node name="HealthUI" parent="." instance=ExtResource( 5 )]
