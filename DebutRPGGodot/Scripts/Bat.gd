@@ -26,6 +26,7 @@ onready var wanderController = $WanderController
 onready var animationPlayer = $AnimationPlayer
 
 func _ready():
+	animationPlayer.play("Stop")
 	state = pick_random_state([IDLE, WANDER])
 
 func _physics_process(delta):
