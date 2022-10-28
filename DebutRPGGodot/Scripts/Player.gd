@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 const PlayerHurtSound = preload("res://Scenes/PlayerHurtSound.tscn")
 
+var Dialog = load("res://Dialouge.tscn")
+
 const ACCELERATION = 500
 const MAX_SPEED = 100
 const ROLL_SPEED = 120
@@ -10,7 +12,8 @@ const FRICTION = 500
 enum {
 	MOVE,
 	ROLL,
-	ATTACK
+	ATTACK,
+	TALK
 }
 
 var state = MOVE
@@ -42,6 +45,9 @@ func _physics_process(delta):
 			
 		ATTACK:
 			attack_state(delta)
+		
+		TALK:
+			talk_state()
 	
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -69,6 +75,9 @@ func move_state(delta):
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
+		
+	if Input.is_action_just_pressed("talk"):
+		state = TALK
 
 func move():
 	velocity = move_and_slide(velocity)
@@ -82,6 +91,9 @@ func attack_state(delta):
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
 
+func talk_state():
+	get_tree().paused = true
+
 func roll_state_finished():
 	#velocity = Vector2.ZERO
 	state = MOVE
@@ -89,6 +101,8 @@ func roll_state_finished():
 func attack_state_finished():
 	state = MOVE
 
+func talk_state_finished():
+	state = MOVE
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage 

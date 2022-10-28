@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://UI/Cyber_Time_Blocky.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/Karina/KarinaAngry.png" type="Texture" id=2]
+[ext_resource path="res://Dialouge.gd" type="Script" id=3]
+[ext_resource path="res://Art/Indicator.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+extra_spacing_top = 7
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="DialougeManager" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Disabler" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Disabler"]
+margin_left = 8.0
+margin_top = 128.0
+margin_right = 312.0
+margin_bottom = 168.0
+
+[node name="Name" type="RichTextLabel" parent="Disabler/ColorRect"]
+margin_left = 48.0
+margin_top = -24.0
+margin_right = 280.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Name Goes Here"
+scroll_active = false
+
+[node name="Text" type="RichTextLabel" parent="Disabler/ColorRect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 584.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "
+Text Goes Here"
+scroll_active = false
+
+[node name="Portrait" type="Sprite" parent="Disabler"]
+position = Vector2( 8, 80 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+centered = false
+flip_h = true
+
+[node name="Timer" type="Timer" parent="Disabler"]
+
+[node name="Indicator" type="Control" parent="Disabler"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Disabler/Indicator"]
+position = Vector2( 136, 120 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 9 )
+frame = 1
+playing = true
+offset = Vector2( 672, 160 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Disabler/Indicator"]
+position = Vector2( 128, 120 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 9 )
+frame = 1
+playing = true
+offset = Vector2( 672, 160 )
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Disabler/Indicator"]
+position = Vector2( 120, 120 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 9 )
+frame = 1
+playing = true
+offset = Vector2( 672, 160 )
+
+[connection signal="timeout" from="Disabler/Timer" to="." method="_on_next_char_timeout"]

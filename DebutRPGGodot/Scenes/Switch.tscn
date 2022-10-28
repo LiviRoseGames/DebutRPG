@@ -78,7 +78,6 @@ anims/SwitchOn = SubResource( 4 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 collision_layer = 8
-show_hit = false
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, 3 )
